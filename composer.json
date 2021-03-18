@@ -1,0 +1,26 @@
+{
+    "name": "justijndepover/php-check",
+    "description": "Helper package to fix coding styles and run unit testing",
+    "keywords": [
+        "php",
+        "check",
+        "php-cs-fixer",
+        "phpunit",
+        "justijndepover"
+    ],
+    "homepage": "https://github.com/justijndepover/php-check",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Justijn Depover",
+            "email": "justijndepover@gmail.com"
+        }
+    ],
+    "require": {},
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
