@@ -16,4 +16,4 @@ $finder = PhpCsFixer\Finder::create()
     ->name('*.php')
     ->notName('*.blade.php');
 
-return \Justijndepover\PHPCheck\styles($finder);
+return \Justijndepover\PHPCheck\Rules::all($finder);

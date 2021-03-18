@@ -1,0 +1,41 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\SingleCommandApplication;
+use Symfony\Component\Filesystem\Filesystem;
+
+require __DIR__ . '/vendor/autoload.php';
+
+(new SingleCommandApplication())
+    ->setName('PHP Check')
+    ->setVersion('0.1.0')
+    ->addOption('phpunit', 'p', InputOption::VALUE_OPTIONAL, 'run PHPUnit', false)
+    ->addOption('list', 'l', InputOption::VALUE_OPTIONAL, 'list the files that are going to be fixed', false)
+    ->setCode(function (InputInterface $input, OutputInterface $output) {
+        $filesystem = new Filesystem();
+
+        if (! $filesystem->exists('.php_cs')) {
+            $output->writeln('⚙️ Installing .php_cs file. Run the script again to run php-cs-fixer.');
+            $filesystem->copy(__DIR__ . '/config/laravel.stub', '.php_cs');
+            exit(0);
+        }
+
+        if ($input->getOption('phpunit') !== false) {
+            exec('./vendor/bin/phpunit', $commandOutput, $commandStatus);
+            $output->writeln($commandStatus == 0 ? '✅ PHPUnit OK' : '❌ PHPUnit Not OK, run ./vendor/bin/phpunit to see more details.');
+            exit(0);
+        }
+
+        if ($input->getOption('list') !== false) {
+            exec('php-cs-fixer fix --dry-run --config=.php_cs', $commandOutput, $commandStatus);
+            $output->writeln($commandOutput);
+            exit(0);
+        }
+
+        exec('php-cs-fixer fix --config=.php_cs', $commandOutput, $commandStatus);
+        $output->writeln($commandStatus == 0 ? '✅ php-cs-fixer OK' : '❌ php-cs-fixer Not OK, run php-cs-fixer fix --config=.php_cs to see more details.');
+    })
+    ->run();

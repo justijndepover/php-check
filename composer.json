@@ -17,7 +17,9 @@
         }
     ],
     "require": {
-        "friendsofphp/php-cs-fixer": "^2.18"
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "symfony/console": "^5.2",
+        "symfony/filesystem": "^5.2"
     },
     "autoload": {
         "psr-4": {
@@ -29,5 +31,8 @@
         "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "bin": [
+        "php-check"
+    ]
 }
