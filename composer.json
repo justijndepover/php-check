@@ -20,9 +20,9 @@
         "friendsofphp/php-cs-fixer": "^2.18"
     },
     "autoload": {
-        "files": [
-            "./src/helpers.php"
-        ]
+        "psr-4": {
+            "Justijndepover\\PHPCheck\\": "src/"
+        }
     },
     "config": {
         "sort-packages": true,

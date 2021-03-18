@@ -11,7 +11,7 @@ composer require justijndepover/php-check --dev
 ```
 
 ## First usage
-After installing the package, you should add a php_cs fixer config file to your project.
+After installing the package, you should add a php-cs-fixer config file to your project.
 
 The script will automatically detect the presence of the file. If none exists, you will be prompted to install one.
 ```sh
@@ -34,6 +34,9 @@ The script is interactive, so you only have to run it.
 ```sh
 ./vendor/bin/php-check
 ```
+
+## Related repositories
+- [timacdonald/php-style](https://github.com/timacdonald/php-style): inspiration for this package
 
 ## Security
 If you find any security related issues, please open an issue or contact me directly at [justijndepover@gmail.com](justijndepover@gmail.com).
