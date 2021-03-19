@@ -17,7 +17,7 @@ if (file_exists(__DIR__.'/../../autoload.php')) {
 
 (new SingleCommandApplication())
     ->setName('PHP Check')
-    ->setVersion('0.1.0')
+    ->setVersion('0.2.0')
     ->addOption('phpunit', 'p', InputOption::VALUE_OPTIONAL, 'run PHPUnit', false)
     ->addOption('list', 'l', InputOption::VALUE_OPTIONAL, 'list the files that are going to be fixed', false)
     ->setCode(function (InputInterface $input, OutputInterface $output) {
