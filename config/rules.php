@@ -21,4 +21,5 @@ return [
     'no_extra_blank_lines' => true,
     'no_trailing_comma_in_singleline_array' => true,
     'whitespace_after_comma_in_array' => true,
+    'return_type_declaration' => true,
 ];
