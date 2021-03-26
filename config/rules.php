@@ -22,4 +22,5 @@ return [
     'no_trailing_comma_in_singleline_array' => true,
     'whitespace_after_comma_in_array' => true,
     'return_type_declaration' => true,
+    'not_operator_with_successor_space' => true,
 ];
