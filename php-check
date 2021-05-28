@@ -36,12 +36,12 @@ if (file_exists(__DIR__.'/../../autoload.php')) {
         }
 
         if ($input->getOption('list') !== false) {
-            exec('php-cs-fixer fix --dry-run --config=.php-cs-fixer.php --using-cache=false', $commandOutput, $commandStatus);
+            exec('./vendor/bin/php-cs-fixer fix --dry-run --config=.php-cs-fixer.php --using-cache=false', $commandOutput, $commandStatus);
             $output->writeln($commandOutput);
             exit(0);
         }
 
-        exec('php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=false', $commandOutput, $commandStatus);
+        exec('./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=false', $commandOutput, $commandStatus);
         $output->writeln($commandStatus == 0 ? '✅ php-cs-fixer OK' : '❌ php-cs-fixer Not OK, run php-cs-fixer fix --config=.php-cs-fixer.php to see more details.');
     })
     ->run();
