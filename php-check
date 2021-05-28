@@ -17,7 +17,7 @@ if (file_exists(__DIR__.'/../../autoload.php')) {
 
 (new SingleCommandApplication())
     ->setName('PHP Check')
-    ->setVersion('0.10.0')
+    ->setVersion('0.11.0')
     ->addOption('phpunit', 'p', InputOption::VALUE_OPTIONAL, 'run PHPUnit', false)
     ->addOption('list', 'l', InputOption::VALUE_OPTIONAL, 'list the files that are going to be fixed', false)
     ->setCode(function (InputInterface $input, OutputInterface $output) {
@@ -41,7 +41,7 @@ if (file_exists(__DIR__.'/../../autoload.php')) {
             exit(0);
         }
 
-        exec('./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=false', $commandOutput, $commandStatus);
+        exec('./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=no', $commandOutput, $commandStatus);
         $output->writeln($commandStatus == 0 ? '✅ php-cs-fixer OK' : '❌ php-cs-fixer Not OK, run php-cs-fixer fix --config=.php-cs-fixer.php to see more details.');
     })
     ->run();
