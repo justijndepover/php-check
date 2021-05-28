@@ -3,7 +3,7 @@
 return [
     '@PSR2' => true,
     'array_syntax' => ['syntax' => 'short'],
-    'trailing_comma_in_multiline_array' => true,
+    'trailing_comma_in_multiline' => true,
     'unary_operator_spaces' => true,
     'binary_operator_spaces' => true,
     'blank_line_after_namespace' => true,
