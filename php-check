@@ -17,15 +17,15 @@ if (file_exists(__DIR__.'/../../autoload.php')) {
 
 (new SingleCommandApplication())
     ->setName('PHP Check')
-    ->setVersion('0.5.0')
+    ->setVersion('0.8.0')
     ->addOption('phpunit', 'p', InputOption::VALUE_OPTIONAL, 'run PHPUnit', false)
     ->addOption('list', 'l', InputOption::VALUE_OPTIONAL, 'list the files that are going to be fixed', false)
     ->setCode(function (InputInterface $input, OutputInterface $output) {
         $filesystem = new Filesystem();
 
-        if (! $filesystem->exists('.php_cs')) {
-            $output->writeln('⚙️ Installing .php_cs file. Run the script again to run php-cs-fixer.');
-            $filesystem->copy(__DIR__ . '/config/laravel.stub', '.php_cs');
+        if (! $filesystem->exists('.php-cs-fixer.php')) {
+            $output->writeln('⚙️ Installing .php-cs-fixer.php file. Run the script again to run php-cs-fixer.');
+            $filesystem->copy(__DIR__ . '/config/laravel.stub', '.php-cs-fixer.php');
             exit(0);
         }
 
@@ -36,12 +36,12 @@ if (file_exists(__DIR__.'/../../autoload.php')) {
         }
 
         if ($input->getOption('list') !== false) {
-            exec('php-cs-fixer fix --dry-run --config=.php_cs --using-cache=false', $commandOutput, $commandStatus);
+            exec('php-cs-fixer fix --dry-run --config=.php-cs-fixer.php --using-cache=false', $commandOutput, $commandStatus);
             $output->writeln($commandOutput);
             exit(0);
         }
 
-        exec('php-cs-fixer fix --config=.php_cs --using-cache=false', $commandOutput, $commandStatus);
-        $output->writeln($commandStatus == 0 ? '✅ php-cs-fixer OK' : '❌ php-cs-fixer Not OK, run php-cs-fixer fix --config=.php_cs to see more details.');
+        exec('php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=false', $commandOutput, $commandStatus);
+        $output->writeln($commandStatus == 0 ? '✅ php-cs-fixer OK' : '❌ php-cs-fixer Not OK, run php-cs-fixer fix --config=.php-cs-fixer.php to see more details.');
     })
     ->run();
